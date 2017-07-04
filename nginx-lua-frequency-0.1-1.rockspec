@@ -8,7 +8,7 @@ source = {
 description = {
    summary = "A frequency module for Nginx written in Lua",
    homepage = "https://github.com/itsmikej/nginx-lua-frequency",
-   maintainer = "Jiang Yang <jiangyang33@gmail.com>"
+   maintainer = "Jiang Yang <jiangyang33@gmail.com>",
    license = "MIT"
 }
 
