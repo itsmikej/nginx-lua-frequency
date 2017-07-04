@@ -17,7 +17,7 @@ Basic Usage
 ```lua
 local freqIns, err = require("frequency").init({
     freq = {
-        -- 秒级
+        -- seconds
         s = {
             unit = 30,
             rules = {
@@ -27,7 +27,7 @@ local freqIns, err = require("frequency").init({
             },
             max_window = 3
         },
-        -- 分钟级
+        -- minutes
         m = {
             unit = 10,
             rules = {
@@ -36,7 +36,7 @@ local freqIns, err = require("frequency").init({
             },
             max_window = 3
         },
-        -- 小时级
+        -- hours
         h = {
             unit = 6,
             rules = {
@@ -46,9 +46,9 @@ local freqIns, err = require("frequency").init({
             max_window = 2
         },
         rules_prefix = "r_",
-        expire = 43210 -- 12 hours + 10 sec
+        expire = 43210 -- 12 hours + 10 seconds
     },
-    adapter = memcached,
+    adapter = require("frequency.adapter.memcached"):connect("127.0.0.1", 11211, 5, "MEMCACHED_")
     after_hit = "log" -- forbid|return|header|log -- 命中规则后的下一步处理
 })
 
@@ -57,7 +57,7 @@ if err ~= nil then
     return
 end
 
-freqIns:check("127.0.0.1")
+freqIns:check(ngx.var.remote_addr)
 ```
 
 
